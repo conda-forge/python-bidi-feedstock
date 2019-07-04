@@ -1,6 +1,6 @@
 {% set name = "python-bidi" %}
-{% set version = "0.4.0" %}
-{% set sha256 = "1a1b3dbee4a0b307c91a465ba4caa8baaaa178151acd20de50ba24f9385f7e13" %}
+{% set version = "0.4.2" %}
+{% set sha256 = "5347f71e82b3e9976dc657f09ded2bfe39ba8d6777ca81a5b2c56c30121c496e" %}
 
 package:
   name: '{{ name|lower }}'
@@ -13,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 1
+  number: 0
   entry_points:
     - pybidi = bidi:main
   script: python -m pip install --no-deps --ignore-installed .
