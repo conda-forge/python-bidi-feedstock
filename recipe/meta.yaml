@@ -1,6 +1,6 @@
 {% set name = "python-bidi" %}
-{% set version = "0.4.2" %}
-{% set sha256 = "5347f71e82b3e9976dc657f09ded2bfe39ba8d6777ca81a5b2c56c30121c496e" %}
+{% set version = "0.5.1" %}
+{% set sha256 = "3375bd95295d70738576e65bfb3c0ec3759343d0c01d9eb1ee28ac7d847773ea" %}
 
 package:
   name: '{{ name|lower }}'
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -16,7 +16,7 @@ build:
   number: 0
   entry_points:
     - pybidi = bidi:main
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
