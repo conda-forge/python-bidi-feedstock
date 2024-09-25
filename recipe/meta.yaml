@@ -12,30 +12,36 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
+  skip: True  # [py<39 or py>312]
   number: 0
   entry_points:
     - pybidi = bidi:main
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
+  build:
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('rust') }}
   host:
     - python
-    - setuptools
     - pip
+    - maturin >=1,<2
   run:
     - python
-    - six
 
 test:
   imports:
     - bidi
   commands:
+    - pip check
     - pybidi --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/MeirKriheli/python-bidi
-  license: LGPLv3
+  license: LGPL-3.0-only
   license_family: LGPL
   license_file: 'COPYING.LESSER'
   summary: Pure python implementation of the BiDi layout algorithm
@@ -45,4 +51,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - thewchan
     - kastman
