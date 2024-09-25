@@ -12,27 +12,32 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
+  skip: True  # [py<39 or py>312]
   number: 0
   entry_points:
     - pybidi = bidi:main
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
+  build:
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('rust') }}
   host:
-    - python>=3.9
-    - setuptools
+    - python
     - pip
-    - maturin
+    - maturin >=1,<2
   run:
-    - python>=3.9
-    - six
+    - python
 
 test:
   imports:
     - bidi
   commands:
+    - pip check
     - pybidi --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/MeirKriheli/python-bidi
