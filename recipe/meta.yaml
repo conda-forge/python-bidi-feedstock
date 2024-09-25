@@ -23,6 +23,7 @@ requirements:
     - python>=3.9
     - setuptools
     - pip
+    - maturin
   run:
     - python>=3.9
     - six
