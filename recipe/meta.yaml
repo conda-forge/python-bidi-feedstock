@@ -1,6 +1,6 @@
 {% set name = "python-bidi" %}
-{% set version = "0.4.2" %}
-{% set sha256 = "5347f71e82b3e9976dc657f09ded2bfe39ba8d6777ca81a5b2c56c30121c496e" %}
+{% set version = "0.5.0" %}
+{% set sha256 = "9ecd990dac5c87f979b93798eee548b90c2229cd3cc94576450d023a16045e3c" %}
 
 package:
   name: '{{ name|lower }}'
@@ -8,34 +8,40 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
+  skip: True  # [py<39 or py>312]
   number: 0
   entry_points:
     - pybidi = bidi:main
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
+  build:
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('rust') }}
   host:
     - python
-    - setuptools
     - pip
+    - maturin >=1,<2
   run:
     - python
-    - six
 
 test:
   imports:
     - bidi
   commands:
+    - pip check
     - pybidi --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/MeirKriheli/python-bidi
-  license: LGPLv3
+  license: LGPL-3.0-only
   license_family: LGPL
   license_file: 'COPYING.LESSER'
   summary: Pure python implementation of the BiDi layout algorithm
