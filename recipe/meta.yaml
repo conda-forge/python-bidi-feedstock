@@ -20,11 +20,11 @@ build:
 
 requirements:
   host:
-    - python
+    - python>=3.9
     - setuptools
     - pip
   run:
-    - python
+    - python>=3.9
     - six
 
 test:
@@ -35,7 +35,7 @@ test:
 
 about:
   home: https://github.com/MeirKriheli/python-bidi
-  license: LGPLv3
+  license: LGPL-3.0-only
   license_family: LGPL
   license_file: 'COPYING.LESSER'
   summary: Pure python implementation of the BiDi layout algorithm
