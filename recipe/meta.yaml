@@ -1,6 +1,6 @@
 {% set name = "python-bidi" %}
-{% set version = "0.5.0" %}
-{% set sha256 = "9ecd990dac5c87f979b93798eee548b90c2229cd3cc94576450d023a16045e3c" %}
+{% set version = "0.5.2" %}
+{% set sha256 = "d4f208078530ab631fd623741d7cfff1394c97aa764f4375bdd4ff2e007bcc88" %}
 
 package:
   name: '{{ name|lower }}'
