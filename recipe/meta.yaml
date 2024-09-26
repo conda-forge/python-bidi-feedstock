@@ -1,6 +1,6 @@
 {% set name = "python-bidi" %}
-{% set version = "0.5.2" %}
-{% set sha256 = "d4f208078530ab631fd623741d7cfff1394c97aa764f4375bdd4ff2e007bcc88" %}
+{% set version = "0.6.0" %}
+{% set sha256 = "0665a0826074a9ff8d29640c0c405a2710b671db14fcc8b1c3ee6615ff10b837" %}
 
 package:
   name: '{{ name|lower }}'
@@ -12,8 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [py<39 or py>312]
-  number: 1
+  skip: true  # [py<39 or py>312]
+  number: 0
   entry_points:
     - pybidi = bidi:main
   script: {{ PYTHON }} -m pip install . --no-deps -vv
