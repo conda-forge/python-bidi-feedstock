@@ -14,3 +14,4 @@ provider:
 test: native_and_emulated
 bot:
   inspection: hint-all
+  automerge: true
