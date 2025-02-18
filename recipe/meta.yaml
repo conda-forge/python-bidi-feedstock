@@ -1,6 +1,6 @@
 {% set name = "python-bidi" %}
-{% set version = "0.6.3" %}
-{% set sha256 = "e12114969001a328aea859f79efc30ab9c15241befb86e07029d8961d97fae36" %}
+{% set version = "0.6.6" %}
+{% set sha256 = "07db4c7da502593bd6e39c07b3a38733704070de0cbf92a7b7277b7be8867dd9" %}
 
 package:
   name: '{{ name|lower }}'
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
